@@ -270,9 +270,10 @@ const NewCardPage = () => {
               <div className="card-item__cover">
                 <Image
                   src={imagen1}
+                  priority
                   className="card-item__bg"
-                  width={400}
-                  height={250}
+                  width="0"
+                  height="0"
                   alt="Card background"
                 />
               </div>
@@ -335,10 +336,10 @@ const NewCardPage = () => {
                     <div>
                       <Image
                         src={masterCardLogo}
-                        width={70}
-                        height={50}
+                        width="0"
+                        height="0"
                         alt="Mastercard logo"
-                        className="h-20"
+                        className="h-20 master-card-logo"
                       />
                     </div>
                   </div>

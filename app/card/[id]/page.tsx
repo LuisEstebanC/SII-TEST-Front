@@ -70,7 +70,8 @@ const CardDetails = ({ card, error }: CardDetailsProps) => {
 };
 
 // Main page component to fetch card data based on the dynamic ID parameter
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async (props: { params: Promise<{ id: string }> }) => {
+  const params = await props.params;
   try {
     const cardData = await fetchCardData(Number(params.id));
     return <CardDetails card={cardData} error={null} />;

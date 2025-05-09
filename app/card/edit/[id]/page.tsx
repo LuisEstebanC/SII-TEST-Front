@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import "./card-styles.css";
@@ -11,7 +11,8 @@ import Image from "next/image";
 import NFCLogo from "@/public/nfc.svg";
 import chip from "@/public/chip.png";
 
-const EditCardPage = ({ params }: { params: { id: string } }) => {
+const EditCardPage = (props: { params: Promise<{ id: string }> }) => {
+  const params = use(props.params);
   const cardId = params.id;
 
   const router = useRouter();
@@ -287,17 +288,19 @@ const EditCardPage = ({ params }: { params: { id: string } }) => {
                 {formData.background_image_url ? (
                   <Image
                     src={imagen1}
+                    priority
                     className="card-item__bg"
-                    width={400}
-                    height={250}
+                    width="0"
+                    height="0"
                     alt="Card background"
                   />
                 ) : (
                   <Image
                     src={imagen1}
+                    priority
                     className="card-item__bg"
-                    width={400}
-                    height={250}
+                    width="0"
+                    height="0"
                     alt="Card background"
                   />
                 )}
@@ -361,10 +364,10 @@ const EditCardPage = ({ params }: { params: { id: string } }) => {
                     <div>
                       <Image
                         src={masterCardLogo}
-                        width={70}
-                        height={50}
+                        width="0"
+                        height="0"
                         alt="Mastercard logo"
-                        className="h-20"
+                        className="h-20 master-card-logo"
                       />
                     </div>
                   </div>

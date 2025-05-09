@@ -16,6 +16,10 @@
   margin: auto;
   width: 100%;
 }
+.master-card-logo {
+  width: 75px;
+  height: 75px;
+}
 
 .card-form__inner {
   background: #fff;
@@ -209,7 +213,7 @@
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.card-input__input:hover, 
+.card-input__input:hover,
 .card-input__input:focus {
   border-color: #3d9cff;
 }
@@ -321,11 +325,11 @@
     flex-wrap: wrap;
     flex-direction: column;
   }
-  
+
   .card-form__row {
     flex-wrap: wrap;
   }
-  
+
   .card-form__col {
     margin-right: 0;
     flex: unset;
@@ -339,32 +343,32 @@
     padding: 25px;
     padding-top: 165px;
   }
-  
+
   .card-item {
     max-width: 310px;
     height: 220px;
     width: 90%;
   }
-  
+
   .card-item__top {
     margin-bottom: 25px;
   }
-  
+
   .card-item__chip {
     width: 50px;
   }
-  
+
   .card-item__number {
     font-size: 21px;
     margin-bottom: 15px;
     padding: 10px 10px;
   }
-  
+
   .card-item__holder {
     font-size: 12px;
     margin-bottom: 5px;
   }
-  
+
   .card-form__button {
     margin-top: 10px;
   }
@@ -375,15 +379,15 @@
     padding: 15px;
     padding-top: 165px;
   }
-  
+
   .card-item {
     height: 180px;
   }
-  
+
   .card-item__top {
     margin-bottom: 15px;
   }
-  
+
   .card-item__chip {
     width: 40px;
   }

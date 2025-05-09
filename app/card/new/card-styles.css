@@ -29,7 +29,10 @@
 .card-list {
   margin-bottom: -70px;
 }
-
+.master-card-logo {
+  width: 75px;
+  height: 75px;
+}
 .card-item {
   max-width: 370px;
   height: 250px;
