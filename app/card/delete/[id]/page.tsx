@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card } from "@/app/types/card";
+import { use } from "react";
 
-const DeleteCardPage = ({ params }: { params: { id: string } }) => {
+const DeleteCardPage = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = use(params);
   const router = useRouter();
   const [card, setCard] = useState<Card | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +18,7 @@ const DeleteCardPage = ({ params }: { params: { id: string } }) => {
     const fetchCardData = async () => {
       try {
         const response = await fetch(
-          `https://sii-test-api.onrender.com/api/card/${params.id}`,
+          `https://sii-test-api.onrender.com/api/card/${id}`,
           {
             cache: "no-store",
           }
@@ -38,7 +40,7 @@ const DeleteCardPage = ({ params }: { params: { id: string } }) => {
     };
 
     fetchCardData();
-  }, [params.id]);
+  }, [id]);
 
   const handleDelete = async () => {
     setIsDeleting(true);
@@ -46,7 +48,7 @@ const DeleteCardPage = ({ params }: { params: { id: string } }) => {
 
     try {
       const response = await fetch(
-        `https://sii-test-api.onrender.com/api/card/${params.id}`,
+        `https://sii-test-api.onrender.com/api/card/${id}`,
         {
           method: "DELETE",
         }
@@ -82,7 +84,7 @@ const DeleteCardPage = ({ params }: { params: { id: string } }) => {
           {error}
         </div>
         <Link href="/" className="text-blue-500 hover:underline">
-         Volver a la lista de tarjetas
+          Volver a la lista de tarjetas
         </Link>
       </div>
     );
@@ -93,7 +95,7 @@ const DeleteCardPage = ({ params }: { params: { id: string } }) => {
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <p>Tarjeta no encontrada</p>
         <Link href="/" className="text-blue-500 hover:underline">
-         Volver a la lista de tarjetas
+          Volver a la lista de tarjetas
         </Link>
       </div>
     );
@@ -132,7 +134,7 @@ const DeleteCardPage = ({ params }: { params: { id: string } }) => {
             {isDeleting ? "Eliminando..." : "Confirmar Eliminación"}
           </button>
           <Link
-            href={`/card/${params.id}`}
+            href={`/card/${id}`}
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
           >
             Cancelar
