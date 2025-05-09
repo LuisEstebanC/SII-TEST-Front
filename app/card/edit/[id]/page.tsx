@@ -201,7 +201,6 @@ const EditCardPage = ({ params }: { params: { id: string } }) => {
       const cleanCardNumber = formData.card_number.replace(/\s/g, "");
       const [exp_month, exp_year] = formData.exp_date.split("/").map(Number);
       const { exp_date, ...dataToSend } = formData;
-      //TODO:Same for this line, check how to remove ESLint error
 
       const response = await fetch(
         `https://sii-test-api.onrender.com/api/card/${cardId}`,
@@ -223,7 +222,7 @@ const EditCardPage = ({ params }: { params: { id: string } }) => {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to update card");
       }
-
+      console.log(exp_date);
       // Redirect to card details page after successful update
       router.push(`/card/${cardId}`);
     } catch (err) {

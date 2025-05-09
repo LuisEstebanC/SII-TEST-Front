@@ -149,7 +149,7 @@ const NewCardPage = () => {
       const cleanCardNumber = formData.card_number.replace(/\s/g, "");
       const [exp_month, exp_year] = formData.exp_date.split("/").map(Number);
       const { exp_date, ...dataToSend } = formData;
-      //TODO: Figure out how to remove Eslint error for this line
+
       const response = await fetch(
         "https://sii-test-api.onrender.com/api/card",
         {
@@ -170,7 +170,7 @@ const NewCardPage = () => {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to create card");
       }
-
+      console.log(exp_date);
       // Redirect to home page after successful creation
       router.push("/");
     } catch (err) {
